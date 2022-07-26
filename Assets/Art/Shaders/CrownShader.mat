@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RingShader
-  m_Shader: {fileID: 4800000, guid: 51957a5e27cb1404192efb61a8bedcd6, type: 3}
+  m_Name: CrownShader
+  m_Shader: {fileID: 4800000, guid: ef2cc682a1278224993e9e0aa3da3304, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,6 +24,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - __dirty: 0
+    - __dirty: 1
     m_Colors: []
   m_BuildTextureStacks: []
