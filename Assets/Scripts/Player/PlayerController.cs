@@ -2,24 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Photon.Pun;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun, IPunObservable
 {
     Rigidbody _rb;
     Animator _animator;
     Camera cam;
+
+    [Header("PROPERTIES")] 
+    [SerializeField] private Renderer renderer;
+    [SerializeField] private Material enemyMat;
+    [SerializeField] private CinemachineFreeLook freeLookCam;
     
     private void Awake()
     {
         cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+
+        if (!photonView.IsMine)
+        {
+            freeLookCam.enabled = false;
+            renderer.material = enemyMat;
+        }
     }
 
     private void Update()
     {
+        if (!photonView.IsMine) return;
+        
         CheckJump();
         
         CheckCollisions();
@@ -130,5 +144,10 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = Vector3.down * minFloorMultplier;
         Gizmos.DrawRay(transform.position, dir);
         //Gizmos.DrawLine(transform.position + Vector3.down, transform.position + Vector3.down * 2);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        //throw new NotImplementedException();
     }
 }

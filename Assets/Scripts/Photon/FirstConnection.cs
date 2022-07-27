@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
@@ -8,6 +9,16 @@ public class FirstConnection : MonoBehaviourPunCallbacks
 {
     public GameObject preLoadObjects, postLoadObjects;
     public GameObject loadingIcon, startButton;
+
+    private void Start()
+    {
+        if(PhotonNetwork.IsConnected)
+            PhotonNetwork.Disconnect();
+        
+        SoundManager.instance.StopAllMusic();
+        SoundManager.instance.StopAllSounds();
+        SoundManager.instance.PlayMusic(MusicID.MAIN_MENU, true);
+    }
 
     public void BTN_Connect()
     {

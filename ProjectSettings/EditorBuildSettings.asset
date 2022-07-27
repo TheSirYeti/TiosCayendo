@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaitingForPlayers.unity
     guid: b5c5e3928b274d648808ed79a69e5dfb
+  - enabled: 1
+    path: Assets/Scenes/TestMovement.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
