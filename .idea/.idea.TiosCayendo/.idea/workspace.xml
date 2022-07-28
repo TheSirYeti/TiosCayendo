@@ -11,9 +11,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../TIOS_CAYENDO/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../TIOS_CAYENDO/Assets/Photon/PhotonUnityNetworking/Code/PhotonNetworkPart.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../TIOS_CAYENDO/Assets/Photon/PhotonUnityNetworking/Code/PhotonView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameSettings/CurrentGameValues.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameSettings/GetWinner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generics/InvisibleColliders.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Generics/SceneCaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/Crown.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/NicknameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/SpawnPositions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sounds/PlaySpecific.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sounds/VolumeSlider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -93,6 +98,9 @@
       <workItem from="1658799735920" duration="1039000" />
       <workItem from="1658806821067" duration="594000" />
       <workItem from="1658857458469" duration="6576000" />
+      <workItem from="1658952275374" duration="4275000" />
+      <workItem from="1658974079368" duration="3971000" />
+      <workItem from="1659031809181" duration="2020000" />
     </task>
     <servers />
   </component>

@@ -9,7 +9,7 @@ public class SpawnPlayer : MonoBehaviour
     public GameObject prefabName;
     private void Start()
     {
-        PhotonNetwork.Instantiate(prefabName.name, SpawnPositions.instance.positions[PhotonNetwork.LocalPlayer.ActorNumber].position,
+        PhotonNetwork.Instantiate(prefabName.name, SpawnPositions.instance.positions[PhotonNetwork.LocalPlayer.ActorNumber - 1].position,
             Quaternion.identity);
     }
 }

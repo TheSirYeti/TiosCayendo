@@ -201,5 +201,6 @@ public enum SoundID
 
 public enum MusicID
 {
-    MAIN_MENU
+    MAIN_MENU,
+    WIN
 }

@@ -14,6 +14,12 @@ public class FirstConnection : MonoBehaviourPunCallbacks
     {
         if(PhotonNetwork.IsConnected)
             PhotonNetwork.Disconnect();
+
+        if (CurrentGameValues.instance != null)
+        {
+            Destroy(CurrentGameValues.instance);
+            CurrentGameValues.instance = null;
+        }
         
         SoundManager.instance.StopAllMusic();
         SoundManager.instance.StopAllSounds();

@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: -2798647614447326047}
   - component: {fileID: 3324843662556603541}
   - component: {fileID: -7769259691361002456}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TioCaedor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
