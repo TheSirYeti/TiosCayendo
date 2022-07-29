@@ -7,6 +7,12 @@ public class SceneCaller : MonoBehaviour
 {
     public void DoAsyncLevelLoad(int levelID)
     {
+        EventManager.ResetEventDictionary();
         SceneManager.LoadSceneAsync(levelID);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

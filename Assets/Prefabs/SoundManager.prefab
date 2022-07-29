@@ -46,6 +46,10 @@ MonoBehaviour:
   sounds:
   - {fileID: 8300000, guid: 67960240ea8543b4bba24627b4357f54, type: 3}
   - {fileID: 8300000, guid: d4834e15ad5a39247b31dccd61bf0a68, type: 3}
+  - {fileID: 8300000, guid: cc72fbac500db104580598e66d03aa53, type: 3}
+  - {fileID: 8300000, guid: 49ea54c050d88114d8d98458a48ecfa8, type: 3}
+  - {fileID: 8300000, guid: 72ea0e6bb1e636c4091f8e9523295b53, type: 3}
+  - {fileID: 8300000, guid: d4388658c20b12c45a2f1cd6a49af739, type: 3}
   music:
   - {fileID: 8300000, guid: 3946a61e3bc68224ebc47b2b9477af8c, type: 3}
   - {fileID: 8300000, guid: 55d9276217e8b0744a9febb8d26435b4, type: 3}

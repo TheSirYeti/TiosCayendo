@@ -16,9 +16,13 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [SerializeField] private Renderer renderer;
     [SerializeField] private Material enemyMat;
     [SerializeField] private CinemachineFreeLook freeLookCam;
+
+    private bool canMove = false;
     
     private void Awake()
     {
+        EventManager.Subscribe("OnPlayerMovementChanged", SetMovementStatus);
+        
         cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
@@ -32,7 +36,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
     private void Update()
     {
-        if (!photonView.IsMine) return;
+        if (!photonView.IsMine || !canMove) return;
         
         CheckJump();
         
@@ -137,6 +141,18 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
             hasJumped = false;
         }
         else hasJumped = true;
+    }
+
+    void SetMovementStatus(object[] parameters)
+    {
+        bool status = (bool)parameters[0];
+        photonView.RPC("RPC_AllowMovement", RpcTarget.AllBuffered, status);
+    }
+
+    [PunRPC]
+    void RPC_AllowMovement(bool status)
+    {
+        canMove = status;
     }
     
     private void OnDrawGizmos()

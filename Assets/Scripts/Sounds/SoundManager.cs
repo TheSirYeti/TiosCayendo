@@ -196,7 +196,11 @@ public class SoundManager : MonoBehaviour
 public enum SoundID
 {
     TIO_FALL,
-    UI_BUTTON
+    UI_BUTTON,
+    UI_COUNTDOWN_3,
+    UI_COUNTDOWN_2,
+    UI_COUNTDOWN_1,
+    UI_COUNTDOWN_GO
 }
 
 public enum MusicID

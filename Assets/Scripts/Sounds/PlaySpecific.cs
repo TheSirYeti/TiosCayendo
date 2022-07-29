@@ -38,4 +38,9 @@ public class PlaySpecific : MonoBehaviour
     {
         SoundManager.instance.PlaySound(soundID);
     }
+
+    public void PlaySound(SoundID sound)
+    {
+        SoundManager.instance.PlaySound(sound);
+    }
 }

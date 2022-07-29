@@ -20,7 +20,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PhotonNetwork.PlayerList.Length == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
-            //cargar level
+            photonView.RPC("RPC_CheckFinalStatus", RpcTarget.AllBuffered);
         }
 
         if (PhotonNetwork.PlayerList.Length == 1)
@@ -36,9 +36,15 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
         playerCountText.text = count + " / 12";
     }
 
+    [PunRPC]
+    void RPC_StartTimer()
+    {
+        StartCoroutine(DoTimer(timeRemaining));
+    }
+    
     public override void OnDisconnected(DisconnectCause cause)
     {
-        photonView.RPC("RPC_SetPlayerCount", RpcTarget.All, PhotonNetwork.PlayerList.Length);
+
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -58,6 +64,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void RPC_UpdateTimer(float time)
     {
+        timeRemaining = time;
         timeText.text = time.ToString();
     }
 
@@ -83,5 +90,25 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
 
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    [PunRPC]
+    void RPC_TEST()
+    {
+        Debug.Log("PLAYER QUIT!");
+        photonView.RPC("RPC_SetPlayerCount", RpcTarget.All, PhotonNetwork.PlayerList.Length - 1);
+        if (PhotonNetwork.LocalPlayer == PhotonNetwork.MasterClient)
+        {
+            StopCoroutine(DoTimer(timeRemaining));
+            StartCoroutine(DoTimer(timeRemaining)); 
+        }
+    }
+    
+    
+    private void OnApplicationQuit()
+    {
+        photonView.RPC("RPC_TEST", RpcTarget.All);
+        PhotonNetwork.SendAllOutgoingCommands();
+        PhotonNetwork.Disconnect();
     }
 }

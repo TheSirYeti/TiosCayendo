@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCountText: {fileID: 1405199493}
-  timeRemaining: 60
+  timeRemaining: 30
   timeText: {fileID: 1802245215}
 --- !u!4 &170671709
 Transform:

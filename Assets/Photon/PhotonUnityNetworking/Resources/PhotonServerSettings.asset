@@ -44,6 +44,11 @@ MonoBehaviour:
   - RPC_UpdateTimer
   - RPC_DisableCollision
   - RPC_DisplayWinnerName
+  - RPC_StartTimer
+  - RPC_TEST
+  - RPC_AllowMovement
+  - RPC_EnablePreGameObjects
+  - RPC_StartGame
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
