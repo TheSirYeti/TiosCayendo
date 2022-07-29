@@ -10,4 +10,9 @@ public class EventRunner : MonoBehaviour
     {
         EventManager.Trigger(eventName, true);
     }
+
+    public void RunEvent(string eventCall)
+    {
+        EventManager.Trigger(eventCall);
+    }
 }

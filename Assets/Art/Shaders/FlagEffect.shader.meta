@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: a0bc7628470c49a48bde18140c9ed83b
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _newlogoRecovered1: {fileID: 2800000, guid: 7c2c216e79d1e0345b31c03bde488eb8, type: 3}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

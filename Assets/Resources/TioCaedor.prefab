@@ -1096,7 +1096,7 @@ MonoBehaviour:
   renderer: {fileID: 7132771723484701891}
   enemyMat: {fileID: 2100000, guid: cbf36ccc536fc9342b0521a721f953a0, type: 2}
   freeLookCam: {fileID: 331598672533850729}
-  _walkingSpeed: 12
+  _walkingSpeed: 25
   _walkingLerpValue: 100
   jumpForce: 46
   isGrounded: 1

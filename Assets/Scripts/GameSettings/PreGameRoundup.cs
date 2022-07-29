@@ -8,7 +8,7 @@ public class PreGameRoundup : MonoBehaviourPun, IPunObservable
 {
     public float firstWaitTime = 3f;
 
-    public GameObject preGameObjects, inGameObjects, postGameObjects;
+    public GameObject loadingObjects, preGameObjects, inGameObjects, postGameObjects;
 
     private void Start()
     {
@@ -32,6 +32,7 @@ public class PreGameRoundup : MonoBehaviourPun, IPunObservable
     [PunRPC]
     void RPC_EnablePreGameObjects()
     {
+        loadingObjects.SetActive(false);
         preGameObjects.SetActive(true);
     }
 

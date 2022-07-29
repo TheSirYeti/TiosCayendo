@@ -200,11 +200,13 @@ public enum SoundID
     UI_COUNTDOWN_3,
     UI_COUNTDOWN_2,
     UI_COUNTDOWN_1,
-    UI_COUNTDOWN_GO
+    UI_COUNTDOWN_GO,
+    TIO_WOO_1
 }
 
 public enum MusicID
 {
     MAIN_MENU,
-    WIN
+    WIN,
+    LEVEL
 }

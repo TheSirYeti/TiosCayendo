@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1366802268930994711, guid: 2d0dd3924d4adea4fae3feded8841bfa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     - target: {fileID: 919132149155446097, guid: 2d0dd3924d4adea4fae3feded8841bfa, type: 3}
       propertyPath: m_Name
       value: tio@Snake Hip Hop Dance
@@ -194,6 +198,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7378762246819157541, guid: 2d0dd3924d4adea4fae3feded8841bfa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0dd3924d4adea4fae3feded8841bfa, type: 3}
 --- !u!4 &55061537 stripped
@@ -5528,6 +5536,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1366802268930994711, guid: 491b9dd7ff5881946a8b13b30aec53e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     - target: {fileID: 919132149155446097, guid: 491b9dd7ff5881946a8b13b30aec53e9, type: 3}
       propertyPath: m_Name
       value: tio@Wave Hip Hop Dance
@@ -5536,6 +5548,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7378762246819157541, guid: 491b9dd7ff5881946a8b13b30aec53e9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 491b9dd7ff5881946a8b13b30aec53e9, type: 3}
 --- !u!4 &820953514 stripped
@@ -5934,6 +5950,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1366802268930994711, guid: 8ac0f0919afded642b7674dd0c79982a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     - target: {fileID: 919132149155446097, guid: 8ac0f0919afded642b7674dd0c79982a, type: 3}
       propertyPath: m_Name
       value: tio@Tut Hip Hop Dance
@@ -5942,6 +5962,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7378762246819157541, guid: 8ac0f0919afded642b7674dd0c79982a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac0f0919afded642b7674dd0c79982a, type: 3}
 --- !u!4 &1474458742 stripped
@@ -6289,6 +6313,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1366802268930994711, guid: a3eae47337833564fbe14f6b99424602, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     - target: {fileID: 919132149155446097, guid: a3eae47337833564fbe14f6b99424602, type: 3}
       propertyPath: m_Name
       value: tio@House Dancing
@@ -6297,6 +6325,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7378762246819157541, guid: a3eae47337833564fbe14f6b99424602, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77bd63dfb35e80f42a7ba0c98ed025b5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3eae47337833564fbe14f6b99424602, type: 3}
 --- !u!1 &1953604155

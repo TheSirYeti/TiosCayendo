@@ -28,10 +28,10 @@ public class PlaySpecific : MonoBehaviour
             SoundManager.instance.PlaySound(soundID);
     }
 
-    public void PlaySpecificMusic(bool shouldLoop)
+    public void PlaySpecificMusic()
     {
         if(playMusicOnStart)
-            SoundManager.instance.PlayMusic(musicID, shouldLoop);
+            SoundManager.instance.PlayMusic(musicID, true);
     }
 
     public void PlaySpecificSound()

@@ -49,6 +49,7 @@ MonoBehaviour:
   - RPC_AllowMovement
   - RPC_EnablePreGameObjects
   - RPC_StartGame
+  - RPC_StartMovement
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

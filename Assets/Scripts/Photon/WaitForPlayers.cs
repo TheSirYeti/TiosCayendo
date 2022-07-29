@@ -11,6 +11,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private TextMeshProUGUI playerCountText;
     [SerializeField] private float timeRemaining = 60f;
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private GameObject lostConnection;
     
     private void Start()
     {
@@ -58,7 +59,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
         if(PhotonNetwork.PlayerList.Length <= 1)
             PhotonNetwork.LoadLevel("MainMenu");
 
-        else PhotonNetwork.LoadLevel("TestMovement");
+        else PhotonNetwork.LoadLevel("Level1");
     }
 
     [PunRPC]
@@ -95,19 +96,16 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     void RPC_TEST()
     {
-        Debug.Log("PLAYER QUIT!");
-        photonView.RPC("RPC_SetPlayerCount", RpcTarget.All, PhotonNetwork.PlayerList.Length - 1);
-        if (PhotonNetwork.LocalPlayer == PhotonNetwork.MasterClient)
-        {
-            StopCoroutine(DoTimer(timeRemaining));
-            StartCoroutine(DoTimer(timeRemaining)); 
-        }
+        lostConnection.SetActive(true);
     }
     
     
     private void OnApplicationQuit()
     {
-        photonView.RPC("RPC_TEST", RpcTarget.All);
+        if (PhotonNetwork.LocalPlayer == PhotonNetwork.MasterClient)
+        {
+            photonView.RPC("RPC_TEST", RpcTarget.All);
+        }
         PhotonNetwork.SendAllOutgoingCommands();
         PhotonNetwork.Disconnect();
     }
