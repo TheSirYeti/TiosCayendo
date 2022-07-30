@@ -30,6 +30,13 @@ public class Crown : MonoBehaviourPun, IPunObservable
         hasWinner = true;
         _collider.enabled = false;
         
+        EventManager.Trigger("OnRaceOver", false);
+        StartCoroutine(DoEndRaceBuffer(2f));
+    }
+
+    IEnumerator DoEndRaceBuffer(float timeBuffer)
+    {
+        yield return new WaitForSeconds(timeBuffer);
         PhotonNetwork.LoadLevel("WinScene");
     }
     

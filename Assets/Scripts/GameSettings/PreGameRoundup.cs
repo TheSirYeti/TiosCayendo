@@ -10,6 +10,11 @@ public class PreGameRoundup : MonoBehaviourPun, IPunObservable
 
     public GameObject loadingObjects, preGameObjects, inGameObjects, postGameObjects;
 
+    private void Awake()
+    {
+        EventManager.Subscribe("OnRaceOver", OnRaceOver);
+    }
+
     private void Start()
     {
         if (PhotonNetwork.LocalPlayer == PhotonNetwork.MasterClient)
@@ -40,9 +45,17 @@ public class PreGameRoundup : MonoBehaviourPun, IPunObservable
     void RPC_StartGame()
     {
         EventManager.Trigger("OnPlayerMovementChanged", true);
+        preGameObjects.SetActive(false);
+        inGameObjects.SetActive(true);
     }
-    
-    
+
+    void OnRaceOver(object[] parameters)
+    {
+        inGameObjects.SetActive(true);
+        SoundManager.instance.StopAllMusic();
+        SoundManager.instance.StopAllSounds();
+        postGameObjects.SetActive(true);
+    }
     
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class FirstConnection : MonoBehaviourPunCallbacks
 {
-    public GameObject preLoadObjects, postLoadObjects;
+    public GameObject preLoadObjects, postLoadObjects, failConnection;
     public GameObject loadingIcon, startButton;
 
     private void Start()
@@ -32,7 +32,7 @@ public class FirstConnection : MonoBehaviourPunCallbacks
         loadingIcon.SetActive(true);
         PhotonNetwork.ConnectUsingSettings();
     }
-
+    
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
@@ -47,5 +47,8 @@ public class FirstConnection : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log($"Connection failed: {cause.ToString()}");
+        startButton.SetActive(true);
+        loadingIcon.SetActive(false);
+        failConnection.SetActive(true);
     }
 }

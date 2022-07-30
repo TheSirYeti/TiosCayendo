@@ -201,7 +201,8 @@ public enum SoundID
     UI_COUNTDOWN_2,
     UI_COUNTDOWN_1,
     UI_COUNTDOWN_GO,
-    TIO_WOO_1
+    TIO_WOO_1,
+    TIO_JUMP
 }
 
 public enum MusicID

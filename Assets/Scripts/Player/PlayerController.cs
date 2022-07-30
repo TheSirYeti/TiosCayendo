@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     private void Awake()
     {
         EventManager.Subscribe("OnPlayerMovementChanged", SetMovementStatus);
+        EventManager.Subscribe("OnRaceOver", SetMovementStatus);
         
         cam = Camera.main;
         _rb = GetComponent<Rigidbody>();
@@ -85,6 +86,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [SerializeField] private bool hasJumped = false;
     [SerializeField] private float jumpCooldown;
     [SerializeField] private float jumpBuffer = 0.65f;
+    [SerializeField] private ParticleSystem jumpVFX;
     [SerializeField] private float jumpFalloff = 8f;
     [SerializeField] private float coyoteTime = 0.3f;
 
@@ -93,6 +95,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             _animator.SetTrigger("jump");
+            SoundManager.instance.PlaySound(SoundID.TIO_JUMP);
+            jumpVFX.Play();
             jumpCooldown = jumpBuffer;
             
             _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
