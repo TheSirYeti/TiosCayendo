@@ -1094,6 +1094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07d4213ffed15045a40cf40417b5ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ragdollRigidbodies: []
   renderer: {fileID: 7132771723484701891}
   enemyMat: {fileID: 2100000, guid: cbf36ccc536fc9342b0521a721f953a0, type: 2}
   freeLookCam: {fileID: 331598672533850729}
@@ -1112,6 +1113,9 @@ MonoBehaviour:
   floorMask:
     serializedVersion: 2
     m_Bits: 64
+  setParentMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-6888197496339818978
 MonoBehaviour:
   m_ObjectHideFlags: 0

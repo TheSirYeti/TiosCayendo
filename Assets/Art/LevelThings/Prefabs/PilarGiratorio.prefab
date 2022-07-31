@@ -27,7 +27,8 @@ Transform:
   m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0.03, y: 0.36228204, z: -0.01}
   m_LocalScale: {x: 0.42125836, y: 0.42125836, z: 0.42125836}
-  m_Children: []
+  m_Children:
+  - {fileID: 8537577035679083634}
   m_Father: {fileID: 8558677056758091944}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,12 +69,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6606450983585313352}
-  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.36228204, z: 0.98}
-  m_LocalScale: {x: 0.42125836, y: 0.42125836, z: 0.42125836}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.3501086}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8558677056758091944}
-  m_RootOrder: 1
+  m_Father: {fileID: 3065020256043361330}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6597114954316723090
 BoxCollider:
@@ -99,6 +100,7 @@ GameObject:
   - component: {fileID: 8558677056758091944}
   - component: {fileID: 4713400716873768717}
   - component: {fileID: 7389751350470765511}
+  - component: {fileID: 8299713856442081657}
   m_Layer: 0
   m_Name: PilarGiratorio
   m_TagString: Untagged
@@ -118,7 +120,6 @@ Transform:
   m_LocalScale: {x: 2.37384, y: 2.37384, z: 2.37384}
   m_Children:
   - {fileID: 3065020256043361330}
-  - {fileID: 8537577035679083634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,3 +172,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8299713856442081657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9046983723264395794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4c7e41529eb944da52383b8815b894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationTime: 8
+  rotateLeft: 0
+  objectToRotate: {fileID: 856563277136624729}

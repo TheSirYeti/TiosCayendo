@@ -5,10 +5,14 @@ using Cinemachine;
 using Photon.Pun;
 using UnityEditor;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviourPun, IPunObservable
 {
     Rigidbody _rb;
+    public Rigidbody[] ragdollRigidbodies;
+    public Collider[] ragdollColliders;
+    Collider mainCollider;
     Animator _animator;
     Camera cam;
 
@@ -16,15 +20,22 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [SerializeField] private Renderer renderer;
     [SerializeField] private Material enemyMat;
     [SerializeField] private CinemachineFreeLook freeLookCam;
+    [SerializeField] private bool isInRagdollMode;
+    
+    private Transform currentCheckpoint;
 
     private bool canMove = false;
     
     private void Awake()
     {
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        ragdollColliders = GetComponentsInChildren<Collider>();
+        
         EventManager.Subscribe("OnPlayerMovementChanged", SetMovementStatus);
         EventManager.Subscribe("OnRaceOver", SetMovementStatus);
         
         cam = Camera.main;
+        mainCollider = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
 
@@ -35,9 +46,14 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         }
     }
 
+    private void Start()
+    {
+        StopRagdoll();
+    }
+
     private void Update()
     {
-        if (!photonView.IsMine || !canMove) return;
+        if (!photonView.IsMine || !canMove || isInRagdollMode) return;
         
         CheckJump();
         
@@ -50,6 +66,16 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         FallingLogic();
         
         TimersManager();
+        
+        if (Input.GetKey(KeyCode.R))
+        {
+            DoRagdoll();
+        }
+        
+        if (Input.GetKey(KeyCode.T))
+        {
+            StopRagdoll();
+        }
     }
 
     [Header("WALK / RUN")]
@@ -120,6 +146,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [Header("COLLISIONS / RAYCAST")]
     [SerializeField] private float minFloorMultplier;
     [SerializeField] private LayerMask floorMask;
+    [SerializeField] private LayerMask setParentMask;
     
     void CheckCollisions()
     {
@@ -134,6 +161,16 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         
         _animator.SetBool("isGrounded", isGrounded);
         _animator.SetBool("hasJumped", hasJumped);
+        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down * minFloorMultplier, out hit, minFloorMultplier, setParentMask))
+        {
+            transform.SetParent(hit.transform);
+        }
+        else
+        {
+            transform.SetParent(null);
+        }
     }
 
     void TimersManager()
@@ -157,6 +194,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     void RPC_AllowMovement(bool status)
     {
         canMove = status;
+        
     }
     
     private void OnDrawGizmos()
@@ -166,8 +204,70 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //Gizmos.DrawLine(transform.position + Vector3.down, transform.position + Vector3.down * 2);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Checkpoint"))
+        {
+            currentCheckpoint = other.transform;
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Resetpoint"))
+        {
+            transform.position = currentCheckpoint.position;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Checkpoint"))
+        {
+            currentCheckpoint = other.transform;
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Resetpoint"))
+        {
+            transform.position = currentCheckpoint.position;
+        }
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         //throw new NotImplementedException();
+    }
+
+    public void DoRagdoll()
+    {
+        isInRagdollMode = true;
+        foreach (var collider in ragdollColliders)
+        {
+            collider.enabled = true;
+        }
+        
+        foreach (var rigidbody in ragdollRigidbodies)
+        {
+            rigidbody.isKinematic = false;
+        }
+
+        mainCollider.enabled = false;
+        _rb.isKinematic = true;
+        _animator.enabled = false;
+    }
+
+    public void StopRagdoll()
+    {
+        isInRagdollMode = false;
+        foreach (var collider in ragdollColliders)
+        {
+            collider.enabled = false;
+        }
+        
+        foreach (var rigidbody in ragdollRigidbodies)
+        {
+            rigidbody.isKinematic = true;
+        }
+
+        mainCollider.enabled = true;
+        _rb.isKinematic = false;
+        _animator.enabled = true;
     }
 }

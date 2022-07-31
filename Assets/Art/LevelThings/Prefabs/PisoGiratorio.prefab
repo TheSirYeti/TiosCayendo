@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2051891385728005769}
   - component: {fileID: 4295658965688156739}
   - component: {fileID: 7039404506762466945}
-  m_Layer: 0
+  - component: {fileID: 4437648364052252726}
+  m_Layer: 10
   m_Name: PisoGiratorio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,6 +94,21 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6099800089077584851, guid: 8dd933ecc5d4afa42849d24b6233d233, type: 3}
+--- !u!114 &4437648364052252726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2350249405438698390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4c7e41529eb944da52383b8815b894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationTime: 4
+  rotateLeft: 0
+  objectToRotate: {fileID: 2350249405438698390}

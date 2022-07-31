@@ -47,8 +47,12 @@ public class FirstConnection : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log($"Connection failed: {cause.ToString()}");
-        startButton.SetActive(true);
-        loadingIcon.SetActive(false);
-        failConnection.SetActive(true);
+
+        if (cause != DisconnectCause.DisconnectByClientLogic)
+        {
+            startButton.SetActive(true);
+            loadingIcon.SetActive(false);
+            failConnection.SetActive(true);
+        }
     }
 }
