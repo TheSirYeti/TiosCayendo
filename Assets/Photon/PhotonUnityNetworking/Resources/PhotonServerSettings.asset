@@ -55,6 +55,7 @@ MonoBehaviour:
   - RPC_DoRagdoll
   - RPC_StopRagdoll
   - RPC_SetParent
+  - RPC_LostConnection
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

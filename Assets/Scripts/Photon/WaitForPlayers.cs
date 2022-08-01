@@ -12,7 +12,8 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private float timeRemaining = 60f;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject lostConnection;
-    
+    [SerializeField] private int amountOfLevels;
+
     private void Start()
     {
         SoundManager.instance.PlaySound(SoundID.TIO_FALL);
@@ -21,13 +22,13 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PhotonNetwork.PlayerList.Length == PhotonNetwork.CurrentRoom.MaxPlayers)
         {
-            photonView.RPC("RPC_CheckFinalStatus", RpcTarget.AllBuffered);
+            int rand = UnityEngine.Random.Range(1, amountOfLevels + 1);
+            photonView.RPC("RPC_CheckFinalStatus", RpcTarget.AllBuffered, rand);
         }
 
         if (PhotonNetwork.PlayerList.Length == 1)
         {
             StartCoroutine(DoTimer(timeRemaining));
-            //photonView.RPC("RPC_UpdateTimer", RpcTarget.All, timeRemaining);
         }
     }
 
@@ -42,11 +43,6 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     {
         StartCoroutine(DoTimer(timeRemaining));
     }
-    
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-
-    }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -54,13 +50,18 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void RPC_CheckFinalStatus()
+    void RPC_CheckFinalStatus(int levelID)
     {
-        if(PhotonNetwork.PlayerList.Length <= 1)
+        if (PhotonNetwork.PlayerList.Length <= 1)
+        {
             PhotonNetwork.LoadLevel("MainMenu");
-
-        else PhotonNetwork.LoadLevel("Level3");
+            return;
+        }
+        
+        PhotonNetwork.LoadLevel("Level" + levelID);
     }
+    
+    
 
     [PunRPC]
     void RPC_UpdateTimer(float time)
@@ -81,7 +82,8 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
         
             if (time <= 0)
             {
-                photonView.RPC("RPC_CheckFinalStatus", RpcTarget.AllBuffered);
+                int rand = UnityEngine.Random.Range(1, amountOfLevels + 1);
+                photonView.RPC("RPC_CheckFinalStatus", RpcTarget.AllBuffered, rand);
                 flag = true;
             }
             else
@@ -94,7 +96,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     [PunRPC]
-    void RPC_TEST()
+    void RPC_LostConnection()
     {
         lostConnection.SetActive(true);
     }
@@ -104,7 +106,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (PhotonNetwork.LocalPlayer == PhotonNetwork.MasterClient)
         {
-            photonView.RPC("RPC_TEST", RpcTarget.All);
+            photonView.RPC("RPC_LostConnection", RpcTarget.All);
         }
         PhotonNetwork.SendAllOutgoingCommands();
         PhotonNetwork.Disconnect();
