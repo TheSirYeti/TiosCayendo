@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3871651001481169231}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rodillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8779079253897087023}
   - component: {fileID: 7548066823807877733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4823947401740976837}
   - component: {fileID: 5423606707216659161}
   - component: {fileID: 3107725834978732274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface115
   m_TagString: Untagged
   m_Icon: {fileID: 0}

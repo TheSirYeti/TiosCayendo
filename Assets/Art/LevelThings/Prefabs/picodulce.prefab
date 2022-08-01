@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 86942349705880897}
   - component: {fileID: 2796760463356514699}
   - component: {fileID: 5579590582386769760}
-  m_Layer: 0
+  - component: {fileID: 3980005605059302451}
+  m_Layer: 11
   m_Name: picodulce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,3 +96,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7030321, y: 4.076261, z: 1.7030287}
   m_Center: {x: -0.0000006579605, y: 0, z: -0.0000018422894}
+--- !u!114 &3980005605059302451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454318016776597598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0236ff39393fbc640b4f121d0776bb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementTime: 3
+  waypoint1: {fileID: 0}
+  waypoint2: {fileID: 0}

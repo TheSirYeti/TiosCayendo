@@ -59,7 +59,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
         if(PhotonNetwork.PlayerList.Length <= 1)
             PhotonNetwork.LoadLevel("MainMenu");
 
-        else PhotonNetwork.LoadLevel("Level2");
+        else PhotonNetwork.LoadLevel("Level3");
     }
 
     [PunRPC]

@@ -8,14 +8,18 @@ public class RotatingPlatforms : MonoBehaviour
     public float rotationTime;
     public bool rotateLeft;
     public GameObject objectToRotate;
-    
-    private void Start()
+
+    private void Awake()
+    {
+        EventManager.Subscribe("OnRaceStart", StartRotating);
+    }
+
+    public void StartRotating(object[] parameters)
     {
         int rotationSign = rotateLeft ? -1 : 1;
         LeanTween.rotateAroundLocal(gameObject, Vector3.up, 360f * rotationSign, rotationTime).setRepeat(-1);
-        //StartCoroutine(DoSpinCycle());
     }
-
+    
     IEnumerator DoSpinCycle()
     {
         int rotationSign = rotateLeft ? -1 : 1;
