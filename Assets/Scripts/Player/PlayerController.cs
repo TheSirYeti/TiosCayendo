@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [SerializeField] private Material enemyMat;
     [SerializeField] private CinemachineFreeLook freeLookCam;
     [SerializeField] private bool isInRagdollMode;
+    [SerializeField] private float ragdollTime;
     
     private Transform currentCheckpoint;
 
@@ -66,16 +67,6 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         FallingLogic();
         
         TimersManager();
-        
-        if (Input.GetKey(KeyCode.R))
-        {
-            DoRagdoll();
-        }
-        
-        if (Input.GetKey(KeyCode.T))
-        {
-            StopRagdoll();
-        }
     }
 
     [Header("WALK / RUN")]
@@ -147,6 +138,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [SerializeField] private float minFloorMultplier;
     [SerializeField] private LayerMask floorMask;
     [SerializeField] private LayerMask setParentMask;
+    [SerializeField] private Transform nullParent;
     
     void CheckCollisions()
     {
@@ -165,12 +157,26 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down * minFloorMultplier, out hit, minFloorMultplier, setParentMask))
         {
-            transform.SetParent(hit.transform);
+            photonView.RPC("RPC_SetParent", RpcTarget.AllBuffered, hit.collider.gameObject.name); //AAAAAAAAAAAA
         }
         else
         {
-            transform.SetParent(null);
+            photonView.RPC("RPC_SetParent", RpcTarget.AllBuffered, "null"); //AAAAAAAAAAAA2
         }
+    }
+
+    [PunRPC]
+    void RPC_SetParent(string objectName)
+    {
+        if (objectName == "null")
+        {
+            transform.SetParent(null);
+            return;
+        }
+        
+        //Pido disculpas pero esto es una porqueria jasjasjas 
+        Transform objectToFind = GameObject.Find(objectName).transform;
+        transform.SetParent(objectToFind);
     }
 
     void TimersManager()
@@ -204,6 +210,14 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //Gizmos.DrawLine(transform.position + Vector3.down, transform.position + Vector3.down * 2);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            StartCoroutine(DoRagdollCycle());
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Checkpoint"))
@@ -214,6 +228,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         if (other.gameObject.layer == LayerMask.NameToLayer("Resetpoint"))
         {
             transform.position = currentCheckpoint.position;
+        }
+        
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            StartCoroutine(DoRagdollCycle());
         }
     }
 
@@ -226,6 +245,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Resetpoint"))
         {
+            StopRagdoll();
             transform.position = currentCheckpoint.position;
         }
     }
@@ -235,6 +255,18 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //throw new NotImplementedException();
     }
 
+    [PunRPC]
+    void RPC_DoRagdoll()
+    {
+        DoRagdoll();
+    }
+    
+    [PunRPC]
+    void RPC_StopRagdoll()
+    {
+        StopRagdoll();
+    }
+    
     public void DoRagdoll()
     {
         isInRagdollMode = true;
@@ -269,5 +301,12 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         mainCollider.enabled = true;
         _rb.isKinematic = false;
         _animator.enabled = true;
+    }
+
+    IEnumerator DoRagdollCycle()
+    {
+        photonView.RPC("RPC_DoRagdoll", RpcTarget.AllBuffered);
+        yield return new WaitForSeconds(ragdollTime);
+        photonView.RPC("RPC_StopRagdoll", RpcTarget.AllBuffered);
     }
 }

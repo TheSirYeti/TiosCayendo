@@ -50,6 +50,11 @@ MonoBehaviour:
   - RPC_EnablePreGameObjects
   - RPC_StartGame
   - RPC_StartMovement
+  - RPC_DoRagDoll
+  - RPC_StopRagDoll
+  - RPC_DoRagdoll
+  - RPC_StopRagdoll
+  - RPC_SetParent
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
