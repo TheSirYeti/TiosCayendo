@@ -180,7 +180,8 @@ MonoBehaviour:
   timeRemaining: 30
   timeText: {fileID: 1802245215}
   lostConnection: {fileID: 1390822883}
-  amountOfLevels: 3
+  matchFound: {fileID: 1227058372}
+  amountOfLevels: 4
 --- !u!4 &170671709
 Transform:
   m_ObjectHideFlags: 0

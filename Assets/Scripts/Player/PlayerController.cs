@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacle") && photonView.IsMine)
         {
             StartCoroutine(DoRagdollCycle());
         }
@@ -230,7 +230,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
             transform.position = currentCheckpoint.position;
         }
         
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle") && photonView.IsMine)
         {
             StartCoroutine(DoRagdollCycle());
         }

@@ -12,6 +12,7 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] private float timeRemaining = 60f;
     [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private GameObject lostConnection;
+    [SerializeField] private TextMeshProUGUI matchFound;
     [SerializeField] private int amountOfLevels;
 
     private void Start()
@@ -57,6 +58,10 @@ public class WaitForPlayers : MonoBehaviourPunCallbacks, IPunObservable
             PhotonNetwork.LoadLevel("MainMenu");
             return;
         }
+
+        timeText.enabled = false;
+        playerCountText.enabled = false;
+        matchFound.text = "MATCH FOUND!";
         
         PhotonNetwork.LoadLevel("Level" + levelID);
     }

@@ -1181,9 +1181,9 @@ MonoBehaviour:
   freeLookCam: {fileID: 331598672533850729}
   isInRagdollMode: 0
   ragdollTime: 3
-  _walkingSpeed: 25
+  _walkingSpeed: 18
   _walkingLerpValue: 100
-  jumpForce: 46
+  jumpForce: 34
   isGrounded: 1
   hasJumped: 0
   jumpCooldown: 0
